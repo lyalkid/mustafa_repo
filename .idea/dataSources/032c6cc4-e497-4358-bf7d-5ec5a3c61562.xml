@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>757</IntrospectionStateNumber>
+      <IntrospectionStateNumber>783</IntrospectionStateNumber>
       <ServerVersion>16.6</ServerVersion>
-      <StartupTime>1735207269</StartupTime>
+      <StartupTime>1735229176</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -800,7 +800,7 @@ false Zulu
 14697||10|C|G
 14697||-9223372036854775808|U|G
 14697||10|U|G</Grants>
-      <IntrospectionStateNumber>757</IntrospectionStateNumber>
+      <IntrospectionStateNumber>783</IntrospectionStateNumber>
       <ObjectId>16397</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4224,51 +4224,51 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>757</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-12-26.10:27:14</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>783</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-12-27.12:54:43</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <sequence id="265" parent="264" name="announcement_id_seq">
-      <ObjectId>16438</ObjectId>
+      <ObjectId>16480</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>755</StateNumber>
+      <StateNumber>774</StateNumber>
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="266" parent="264" name="user_and_announcement_id_seq">
-      <ObjectId>16449</ObjectId>
+      <ObjectId>16491</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>756</StateNumber>
+      <StateNumber>775</StateNumber>
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="267" parent="264" name="users_id_seq">
-      <ObjectId>16425</ObjectId>
+      <ObjectId>16466</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>754</StateNumber>
+      <StateNumber>770</StateNumber>
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <table id="268" parent="264" name="announcement">
-      <ObjectId>16439</ObjectId>
-      <StateNumber>756</StateNumber>
+      <ObjectId>16481</ObjectId>
+      <StateNumber>775</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="269" parent="264" name="user_and_announcement">
-      <ObjectId>16450</ObjectId>
-      <StateNumber>756</StateNumber>
+      <ObjectId>16492</ObjectId>
+      <StateNumber>782</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="270" parent="264" name="users">
-      <ObjectId>16426</ObjectId>
-      <StateNumber>756</StateNumber>
+      <ObjectId>16467</ObjectId>
+      <StateNumber>782</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4276,38 +4276,38 @@ false Zulu
       <DefaultExpression>nextval(&apos;announcement_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>755</StateNumber>
+      <StateNumber>774</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <SequenceId>16438</SequenceId>
+      <SequenceId>16480</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="272" parent="268" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>755</StateNumber>
+      <StateNumber>774</StateNumber>
       <StoredType>varchar(100)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <column id="273" parent="268" name="description">
       <Position>3</Position>
-      <StateNumber>755</StateNumber>
+      <StateNumber>774</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
     <index id="274" parent="268" name="announcement_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16445</ObjectId>
+      <ObjectId>16487</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>755</StateNumber>
+      <StateNumber>774</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="275" parent="268" name="announcement_name_key">
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16447</ObjectId>
-      <StateNumber>755</StateNumber>
+      <ObjectId>16489</ObjectId>
+      <StateNumber>774</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
@@ -4316,114 +4316,114 @@ false Zulu
     </index>
     <key id="276" parent="268" name="announcement_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16446</ObjectId>
+      <ObjectId>16488</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>755</StateNumber>
-      <UnderlyingIndexId>16445</UnderlyingIndexId>
+      <StateNumber>774</StateNumber>
+      <UnderlyingIndexId>16487</UnderlyingIndexId>
     </key>
     <key id="277" parent="268" name="announcement_name_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16448</ObjectId>
-      <StateNumber>755</StateNumber>
-      <UnderlyingIndexId>16447</UnderlyingIndexId>
+      <ObjectId>16490</ObjectId>
+      <StateNumber>774</StateNumber>
+      <UnderlyingIndexId>16489</UnderlyingIndexId>
     </key>
     <column id="278" parent="269" name="id">
       <DefaultExpression>nextval(&apos;user_and_announcement_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>756</StateNumber>
+      <StateNumber>775</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <SequenceId>16449</SequenceId>
+      <SequenceId>16491</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="279" parent="269" name="user_id">
       <Position>2</Position>
-      <StateNumber>756</StateNumber>
+      <StateNumber>775</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <column id="280" parent="269" name="announcement_id">
       <Position>3</Position>
-      <StateNumber>756</StateNumber>
+      <StateNumber>775</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="281" parent="269" name="user_and_announcement_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16456</ObjectId>
-      <StateNumber>756</StateNumber>
+      <ObjectId>16498</ObjectId>
+      <StateNumber>775</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16426</RefTableId>
+      <RefTableId>16467</RefTableId>
     </foreign-key>
     <foreign-key id="282" parent="269" name="user_and_announcement_announcement_id_fkey">
       <ColNames>announcement_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16461</ObjectId>
-      <StateNumber>756</StateNumber>
+      <ObjectId>16503</ObjectId>
+      <StateNumber>775</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16439</RefTableId>
+      <RefTableId>16481</RefTableId>
     </foreign-key>
     <index id="283" parent="269" name="user_and_announcement_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16454</ObjectId>
+      <ObjectId>16496</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>756</StateNumber>
+      <StateNumber>782</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="284" parent="269" name="user_and_announcement_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16455</ObjectId>
+      <ObjectId>16497</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>756</StateNumber>
-      <UnderlyingIndexId>16454</UnderlyingIndexId>
+      <StateNumber>775</StateNumber>
+      <UnderlyingIndexId>16496</UnderlyingIndexId>
     </key>
     <column id="285" parent="270" name="id">
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>754</StateNumber>
+      <StateNumber>770</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <SequenceId>16425</SequenceId>
+      <SequenceId>16466</SequenceId>
       <TypeId>23</TypeId>
     </column>
     <column id="286" parent="270" name="user_name">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>754</StateNumber>
+      <StateNumber>770</StateNumber>
       <StoredType>varchar(100)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <column id="287" parent="270" name="email">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>754</StateNumber>
+      <StateNumber>770</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <column id="288" parent="270" name="password">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>754</StateNumber>
+      <StateNumber>770</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
     <index id="289" parent="270" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16432</ObjectId>
+      <ObjectId>16473</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>754</StateNumber>
+      <StateNumber>782</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="290" parent="270" name="users_user_name_key">
       <ColNames>user_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16434</ObjectId>
-      <StateNumber>754</StateNumber>
+      <ObjectId>16475</ObjectId>
+      <StateNumber>782</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
@@ -4433,8 +4433,8 @@ false Zulu
     <index id="291" parent="270" name="users_email_key">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16436</ObjectId>
-      <StateNumber>754</StateNumber>
+      <ObjectId>16477</ObjectId>
+      <StateNumber>782</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
@@ -4443,22 +4443,22 @@ false Zulu
     </index>
     <key id="292" parent="270" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16433</ObjectId>
+      <ObjectId>16474</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>754</StateNumber>
-      <UnderlyingIndexId>16432</UnderlyingIndexId>
+      <StateNumber>770</StateNumber>
+      <UnderlyingIndexId>16473</UnderlyingIndexId>
     </key>
     <key id="293" parent="270" name="users_user_name_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16435</ObjectId>
-      <StateNumber>754</StateNumber>
-      <UnderlyingIndexId>16434</UnderlyingIndexId>
+      <ObjectId>16476</ObjectId>
+      <StateNumber>770</StateNumber>
+      <UnderlyingIndexId>16475</UnderlyingIndexId>
     </key>
     <key id="294" parent="270" name="users_email_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16437</ObjectId>
-      <StateNumber>754</StateNumber>
-      <UnderlyingIndexId>16436</UnderlyingIndexId>
+      <ObjectId>16478</ObjectId>
+      <StateNumber>770</StateNumber>
+      <UnderlyingIndexId>16477</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

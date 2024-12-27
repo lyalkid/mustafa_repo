@@ -8,15 +8,17 @@ create table users (
 create table announcement(
     id serial primary key,
     name varchar(100) unique not null,
-    description text,
-    user_id int,
-    foreign key (user_id) references users(id);
+    description text
+
 );
 
 create table user_and_announcement(
     id serial primary key,
     user_id int,
     announcement_id int,
-    foreign key (user_id) references users(id);
+    foreign key (user_id) references users(id),
     foreign key (announcement_id) references announcement(id)
 );
+
+
+select * from users;
