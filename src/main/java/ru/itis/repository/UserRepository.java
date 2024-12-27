@@ -9,10 +9,10 @@ public interface UserRepository {
     void save(User user) throws SQLException;
     void update(User user) throws SQLException;
     void updatePassword(User user, String new_password) throws SQLException;
-    void deleteUser(Long userId)throws SQLException;
+    boolean deleteUserById(Long userId)throws SQLException;
 
     List<User> findAll();
-    User findById(int userId)throws SQLException;
+    User findById(Long userId);
     User findByEmail(String email)throws SQLException;
     User findByUsername(String username)throws SQLException;
 

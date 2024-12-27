@@ -16,8 +16,8 @@ create table user_and_announcement(
     id serial primary key,
     user_id int,
     announcement_id int,
-    foreign key (user_id) references users(id),
-    foreign key (announcement_id) references announcement(id)
+    foreign key (user_id) references users(id) on delete cascade ,
+    foreign key (announcement_id) references announcement(id) on delete cascade
 );
 
 

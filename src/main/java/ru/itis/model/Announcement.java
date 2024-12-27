@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Announcement {
-    private int id;
+    private Long id;
     private String title;
     private String description;
 }
