@@ -1,5 +1,6 @@
 package ru.itis.service;
 
+import ru.itis.dto.UserDto;
 import ru.itis.model.User;
 import ru.itis.repository.UserRepository;
 import ru.itis.repository.UserRepositoryJdbcImpl;
@@ -10,6 +11,10 @@ import java.util.List;
 public class UserService {
 
     private UserRepository userRepository;
+
+    public UserService(){
+        this.userRepository = new UserRepositoryJdbcImpl();
+    }
 
     public UserService(DataSource dataSource) {
         this.userRepository = new UserRepositoryJdbcImpl(dataSource);
@@ -42,8 +47,14 @@ public class UserService {
         return result;
     }
 
+    public void create(UserDto userDto){
+        save(new User(userDto.getId(), userDto.getUsername(), userDto.getEmail(), userDto.getPassword()) );
+    }
     public User getUserById(Long id) {
         return userRepository.findById(id);
     }
 
+    public User getUserByName(String username){
+        return userRepository.findByUsername(username);
+    }
 }

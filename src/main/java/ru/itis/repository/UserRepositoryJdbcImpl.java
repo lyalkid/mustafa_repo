@@ -1,5 +1,6 @@
 package ru.itis.repository;
 
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.itis.model.User;
 import ru.itis.util.ConnectionManager;
 
@@ -12,16 +13,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryJdbcImpl implements UserRepository {
+    private static final String DB_USERNAME = "postgres";
+    private static final String DB_PASSWORD = "postgres";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String DB_DRIVER = "org.postgresql.Driver";
 
-    private static final String SQL_INSERT_INTO_USERS = "insert into users(id, user_name, email, password) values (?, ?,?,?)";
+
+    private static final String SQL_INSERT_INTO_USERS = "insert into users( user_name, email, password) values (?, ?,?)";
     private static final String SQL_UPDATE_USERS = "update users set user_name = ?, email = ?, password = ? where user_id = ?";
     private static final String SQL_DELETE_USER_BY_ID = "delete from users where id = ?";
     private static final String SQL_UPDATE_PASSWORD_USERS = "update users set password = ? where id = ?";
     private static final String SQL_SELECT_ALL_USERS = "select * from users";
+
     private static final String SQL_SELECT_USER_BY_ID = "select * from users where id = ?";
+    private static final String SQL_SELECT_USER_BY_USERNAME = "select * from users where user_name = ?";
 //    private static final ConnectionManager connectionManager = new ConnectionManager();
 
     private DataSource dataSource;
+
+    public UserRepositoryJdbcImpl() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(DB_DRIVER);
+        dataSource.setPassword(DB_PASSWORD);
+        dataSource.setUrl(DB_URL);
+        dataSource.setUsername(DB_USERNAME);
+        this.dataSource = dataSource;
+    }
 
     public UserRepositoryJdbcImpl(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -33,10 +50,10 @@ public class UserRepositoryJdbcImpl implements UserRepository {
         try {
             Connection connection = dataSource.getConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setLong(1, user.getId());
-                preparedStatement.setString(2, user.getUsername());
-                preparedStatement.setString(3, user.getEmail());
-                preparedStatement.setString(4, user.getPassword());
+               // preparedStatement.setLong(1, user.getId() != null ?  user.getId() : count()+1);
+                preparedStatement.setString(1, user.getUsername());
+                preparedStatement.setString(2, user.getEmail());
+                preparedStatement.setString(3, user.getPassword());
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -123,7 +140,7 @@ public class UserRepositoryJdbcImpl implements UserRepository {
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_USER_BY_ID);) {
                 preparedStatement.setLong(1, userId);
                 ResultSet resultSet = preparedStatement.executeQuery();
-                if(resultSet.next()) {
+                if (resultSet.next()) {
                     user = new User();
                     user.setId(resultSet.getLong("id"));
                     user.setUsername(resultSet.getString("user_name"));
@@ -139,15 +156,35 @@ public class UserRepositoryJdbcImpl implements UserRepository {
 
     // TODO: домашка
     @Override
-    public User findByEmail(String email) throws SQLException {
+    public User findByEmail(String email) {
         return null;
     }
 
     // TODO: домашка
     @Override
-    public User findByUsername(String username) throws SQLException {
-        return null;
+    public User findByUsername(String username) {
+        User user = null;
+        try {
+            Connection connection = dataSource.getConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_USER_BY_USERNAME)) {
+                preparedStatement.setString(1, username);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    user = new User();
+                    user.setId(resultSet.getLong("id"));
+                    user.setUsername(resultSet.getString("user_name"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setPassword(resultSet.getString("password"));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
+
+
+
 }
 
 // TODO: методы исправить , announcment repository, services,  servlets , jsp, filter, auth, roles, dto, dao

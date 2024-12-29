@@ -13,7 +13,7 @@ public interface UserRepository {
 
     List<User> findAll();
     User findById(Long userId);
-    User findByEmail(String email)throws SQLException;
-    User findByUsername(String username)throws SQLException;
+    User findByEmail(String email);
+    User findByUsername(String username);
 
 }
