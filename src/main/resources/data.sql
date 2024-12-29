@@ -52,5 +52,14 @@ create table reviews(
 );
 
 
+--
+-- create table categories_house(
+--     category_id serial primary key,
+--     name varchar(100) not null
+-- );
+-- create table announcement_categories(
+--
+-- );
+
 select *
 from users;

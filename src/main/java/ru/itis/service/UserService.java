@@ -3,7 +3,7 @@ package ru.itis.service;
 import ru.itis.dto.UserDto;
 import ru.itis.model.User;
 import ru.itis.repository.UserRepository;
-import ru.itis.repository.UserRepositoryJdbcImpl;
+import ru.itis.repository.impl.UserRepositoryJdbcImpl;
 
 import javax.sql.DataSource;
 import java.util.List;

@@ -1,7 +1,8 @@
-package ru.itis.repository;
+package ru.itis.repository.impl;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.itis.model.User;
+import ru.itis.repository.UserRepository;
 import ru.itis.util.ConnectionManager;
 
 import javax.sql.DataSource;

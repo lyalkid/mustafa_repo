@@ -1,6 +1,8 @@
-package ru.itis.repository;
+package ru.itis.repository.impl;
 
 import ru.itis.model.Announcement;
+import ru.itis.repository.AnnouncementRepository;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnnouncementRepositoryJdbcImpl implements AnnouncementRepository{
+public class AnnouncementRepositoryJdbcImpl implements AnnouncementRepository {
 
     private static final String SQL_INSERT_INTO_ANNOUNCEMENT = "insert into announcement(id, name, description) values (?,?,?)";
     private static final String SQL_UPDATE_ANNOUNCEMENT = "update announcement set name = ?, description = ? where id = ?";
@@ -85,15 +87,6 @@ public class AnnouncementRepositoryJdbcImpl implements AnnouncementRepository{
         }
     }
 
-//    @Override
-//    public boolean delete(Announcement announcement) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean deleteById(Long id) {
-//        return false;
-//    }
 
     @Override
     public boolean deleteByAnnouncementId(Long id) throws SQLException {

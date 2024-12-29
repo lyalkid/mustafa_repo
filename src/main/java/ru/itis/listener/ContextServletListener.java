@@ -8,9 +8,9 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 import ru.itis.repository.AnnouncementRepository;
-import ru.itis.repository.AnnouncementRepositoryJdbcImpl;
+import ru.itis.repository.impl.AnnouncementRepositoryJdbcImpl;
 import ru.itis.repository.UserRepository;
-import ru.itis.repository.UserRepositoryJdbcImpl;
+import ru.itis.repository.impl.UserRepositoryJdbcImpl;
 
 @WebListener
 public class ContextServletListener implements ServletContextListener {

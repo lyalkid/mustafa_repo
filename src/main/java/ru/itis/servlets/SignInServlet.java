@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import ru.itis.model.User;
 import ru.itis.service.UserService;
 
@@ -34,14 +35,17 @@ public class SignInServlet extends HttpServlet {
         User user = userService.getUserByName(username);
 
         if (user != null && user.getPassword().equals(password)) {
-            // Сохраняем пользователя в сессии
-            req.getSession().setAttribute("currentUser", user);
-            // Редирект на страницу пользователя
+            HttpSession session = req.getSession(true);
+
+            session.setAttribute("authenticated", true);
+            session.setAttribute("currentUser", user);
             resp.sendRedirect(req.getContextPath() + "/user?id=" + user.getId());
+        } else if (user == null) {
+            resp.sendRedirect("/signUp");
         } else {
             // Возвращаем сообщение об ошибке
             req.setAttribute("errorMessage", "Invalid username or password");
-            req.getRequestDispatcher("/html/signIn.html").forward(req, resp);
+            resp.sendRedirect("/signIn");
         }
 
 
