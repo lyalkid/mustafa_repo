@@ -28,7 +28,7 @@ public class AuthFilter extends HttpFilter {
         boolean sessionExists = currentSession != null;
         boolean isLoginPage = request.getRequestURI().equals("/signIn");
         boolean isSignUpPage = request.getRequestURI().equals("/signUp");
-        boolean isHomePage = request.getRequestURI().equals("/");
+        boolean isWelcomePage = request.getRequestURI().equals("/");
         String path = request.getRequestURI();
         String username = null;
 
@@ -40,13 +40,13 @@ public class AuthFilter extends HttpFilter {
             username = (String) currentSession.getAttribute("username");
         }
 
-        if(isHomePage){
+        if(isWelcomePage){
             filterChain.doFilter(request, response);
         }
         if(isAuth && !isLoginPage || !isAuth && (isLoginPage || isSignUpPage)) {
 
             filterChain.doFilter(request, response);
-        } else if (!isAuth && (!isHomePage  )) {
+        } else if (!isAuth && (!isWelcomePage  )) {
 
             response.sendRedirect("/signIn");
         } else {

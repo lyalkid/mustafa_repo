@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-222.3739.54">
-    <data-source name="mustafa@localhost" uuid="032c6cc4-e497-4358-bf7d-5ec5a3c61562">
-      <database-info product="PostgreSQL" version="16.6" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.6" exact-driver-version="42.7">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>postgres</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="database" qname="@">
-            <node kind="schema" qname="@" />
-          </node>
-        </introspection-scope>
-      </schema-mapping>
-    </data-source>
-    <data-source name="postgres@localhost" uuid="911c74fa-7170-4102-bb98-16dd517b4f7b">
+    <data-source name="postgres@localhost" uuid="70b24b06-4476-4b3e-afd5-10d4651b1db0">
       <database-info product="PostgreSQL" version="16.6 (Ubuntu 16.6-1.pgdg22.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.6" exact-driver-version="42.7">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>

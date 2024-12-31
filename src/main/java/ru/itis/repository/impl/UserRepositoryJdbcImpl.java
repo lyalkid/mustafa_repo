@@ -3,7 +3,7 @@ package ru.itis.repository.impl;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.itis.model.User;
 import ru.itis.repository.UserRepository;
-import ru.itis.util.ConnectionManager;
+import ru.itis.utils.DBProperty;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,13 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryJdbcImpl implements UserRepository {
-    private static final String DB_USERNAME = "postgres";
-    private static final String DB_PASSWORD = "postgres";
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String DB_DRIVER = "org.postgresql.Driver";
 
 
-    private static final String SQL_INSERT_INTO_USERS = "insert into users( user_name, email, password) values (?, ?,?)";
+    private static final String SQL_INSERT_INTO_USERS = "insert into users( user_name, email, password, first_name, second_name, birth_date) values (?, ?,?,?, ?,? )";
     private static final String SQL_UPDATE_USERS = "update users set user_name = ?, email = ?, password = ? where user_id = ?";
     private static final String SQL_DELETE_USER_BY_ID = "delete from users where id = ?";
     private static final String SQL_UPDATE_PASSWORD_USERS = "update users set password = ? where id = ?";
@@ -34,10 +30,10 @@ public class UserRepositoryJdbcImpl implements UserRepository {
 
     public UserRepositoryJdbcImpl() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(DB_DRIVER);
-        dataSource.setPassword(DB_PASSWORD);
-        dataSource.setUrl(DB_URL);
-        dataSource.setUsername(DB_USERNAME);
+        dataSource.setDriverClassName(DBProperty.DB_DRIVER);
+        dataSource.setPassword(DBProperty.DB_PASSWORD);
+        dataSource.setUrl(DBProperty.DB_URL);
+        dataSource.setUsername(DBProperty.DB_USERNAME);
         this.dataSource = dataSource;
     }
 
@@ -55,6 +51,10 @@ public class UserRepositoryJdbcImpl implements UserRepository {
                 preparedStatement.setString(1, user.getUsername());
                 preparedStatement.setString(2, user.getEmail());
                 preparedStatement.setString(3, user.getPassword());
+                preparedStatement.setString(4, user.getFirstName());
+                preparedStatement.setString(5, user.getSecondName());
+                preparedStatement.setDate(6, user.getBirthDate());
+
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -71,6 +71,10 @@ public class UserRepositoryJdbcImpl implements UserRepository {
                 preparedStatement.setString(1, user.getUsername());
                 preparedStatement.setString(2, user.getEmail());
                 preparedStatement.setString(3, user.getPassword());
+                preparedStatement.setString(4, user.getFirstName());
+                preparedStatement.setString(5, user.getSecondName());
+                preparedStatement.setDate(6, user.getBirthDate());
+
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException ex) {

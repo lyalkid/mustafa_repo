@@ -1,7 +1,9 @@
 package ru.itis.repository.impl;
 
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.itis.model.Announcement;
 import ru.itis.repository.AnnouncementRepository;
+import ru.itis.utils.DBProperty;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -24,6 +26,15 @@ public class AnnouncementRepositoryJdbcImpl implements AnnouncementRepository {
     private DataSource dataSource;
 
     public AnnouncementRepositoryJdbcImpl(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
+
+    public AnnouncementRepositoryJdbcImpl(){
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(DBProperty.DB_DRIVER);
+        dataSource.setPassword(DBProperty.DB_PASSWORD);
+        dataSource.setUrl(DBProperty.DB_URL);
+        dataSource.setUsername(DBProperty.DB_USERNAME);
         this.dataSource = dataSource;
     }
 

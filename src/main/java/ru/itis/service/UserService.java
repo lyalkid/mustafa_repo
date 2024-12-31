@@ -48,7 +48,7 @@ public class UserService {
     }
 
     public void create(UserDto userDto){
-        save(new User(userDto.getId(), userDto.getUsername(), userDto.getEmail(), userDto.getPassword()) );
+        save(new User(userDto) );
     }
     public User getUserById(Long id) {
         return userRepository.findById(id);
