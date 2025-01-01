@@ -1,12 +1,11 @@
 package ru.itis.model;
 
-
 import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Review {

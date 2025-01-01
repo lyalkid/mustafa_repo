@@ -11,6 +11,8 @@ import java.util.List;
 public class AnnouncementService {
 
     private AnnouncementRepository announcementRepository;
+    private UserService userService = new UserService();
+    private ImageService imageService = new ImageService();
 
     public AnnouncementService() {
         this.announcementRepository = new AnnouncementRepositoryJdbcImpl();
@@ -28,12 +30,22 @@ public class AnnouncementService {
         return announcementRepository.findAll();
     }
 
-
-    public void save(Announcement Announcement) {
+    public List<Announcement>    getAnnouncementByUserId(Long userId){return announcementRepository.findByUserId(userId);}
+    public void save(Announcement announcement) {
         try {
-            announcementRepository.save(Announcement);
+            String imagePath = imageService.getImagesByAnnouncementId(announcement.getId()).getFilePath();
+            announcementRepository.save(announcement);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void save(String title, String description, Long user_id) {
+        try {
+//            String imagePath = imageService.getImagesByAnnouncementId(announcement.getId()).getFilePath();
+            announcementRepository.save(title, description, user_id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

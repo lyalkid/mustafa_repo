@@ -6,53 +6,41 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
+    <nav>
+        <ul class="navbar">
+            <li><a href="${pageContext.request.contextPath}/about">About</a></li>
+            <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <li><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+                </c:otherwise>
+            </c:choose>
+            <li><a href="/announcements">Announcements</a></li>
+            <c:if test="${not empty sessionScope.user}">
+                <form action="${pageContext.request.contextPath}/signOut" method="post">
+                    <button type="submit">signOut</button>
+                </form>
+            </c:if>
+
+
+
+        </ul>
+    </nav>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <style>
-        body {
-            background-color: #ffeb3b;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        h1 {
-            color: #ff9800;
-        }
-        h3 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        a {
-            color: #ff9800;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #d32f2f;
-        }
-    </style>
+
 </head>
 <body>
 <h1>Welcome to our resource!</h1>
 <h3>Here are our main pages:</h3>
 <h2>Hello, ${username}!</h2>
-<ul>
-    <li><a href="/announcementList">Announcements</a></li>
-</ul>
+
 </body>
 </html>

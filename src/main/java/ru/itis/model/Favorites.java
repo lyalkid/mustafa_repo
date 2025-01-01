@@ -4,13 +4,12 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Favorites {
     Long id;
-    User user;
-    Announcement announcement;
-
+    Long userId;
+    Long announcementId;
 }

@@ -13,10 +13,12 @@ create table users
 create table announcement
 (
     id          serial primary key,
-    name        varchar(100) unique not null,
+    title        varchar(100) unique not null,
     description text,
     user_id     int,
-    foreign key (user_id) references users (id) on delete cascade
+    image_id int,
+    foreign key (user_id) references users (id) on delete cascade,
+    foreign key (image_id) references images(id) on delete cascade
 
 );
 
@@ -41,15 +43,13 @@ create table reviews(
     foreign key (user_id) references users (id) on delete cascade,
     foreign key (announcement_id) references announcement (id) on delete cascade
 );
+
 create table images
 (
     id               serial primary key,
-    announcement_id  int not null,
-    file_name        varchar(255),
-    file_path        text,
-    foreign key (announcement_id) references announcement (id) on delete cascade
+    file_name        varchar(100) not null ,
+    file_path        varchar(100) not null ,
+    file_type varchar(20) not null
 );
 
 
-select *
-from users;

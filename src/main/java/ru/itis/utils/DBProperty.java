@@ -2,8 +2,6 @@ package ru.itis.utils;
 
 import lombok.Getter;
 
-
-
 public class DBProperty {
     public static final String DB_USERNAME = "postgres";
     public static final String DB_PASSWORD = "postgres";

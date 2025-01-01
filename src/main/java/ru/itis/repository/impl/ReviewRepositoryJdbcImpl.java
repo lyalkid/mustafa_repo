@@ -1,9 +1,7 @@
 package ru.itis.repository.impl;
 
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.itis.model.Review;
 import ru.itis.repository.ReviewRepository;
-import ru.itis.utils.DBProperty;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -21,16 +19,9 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     public ReviewRepositoryJdbcImpl(DataSource dataSource){
         this.dataSource = dataSource;
     }
-    public ReviewRepositoryJdbcImpl(){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(DBProperty.DB_DRIVER);
-        dataSource.setPassword(DBProperty.DB_PASSWORD);
-        dataSource.setUrl(DBProperty.DB_URL);
-        dataSource.setUsername(DBProperty.DB_USERNAME);
-        this.dataSource = dataSource;
-    }
+
     @Override
-    public void save(Review review) {
+    public void save(Review review) throws SQLException {
         String sql = SQL_INSERT_INTO_REVIEW;
         try{
             Connection connection = dataSource.getConnection();
@@ -77,7 +68,7 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public boolean deleteById(Long id) throws SQLException {
         String sql = SQL_DELETE_REVIEW_BY_ID;
         try {
             Connection connection = dataSource.getConnection();

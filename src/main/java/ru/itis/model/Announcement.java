@@ -11,4 +11,6 @@ public class Announcement {
     private Long id;
     private String title;
     private String description;
+    private Long userId;
+    private Long imageId;
 }

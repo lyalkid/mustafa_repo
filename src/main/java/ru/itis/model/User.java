@@ -23,15 +23,15 @@ public class User {
     private Date birthDate;
 
 
-public User(UserDto userDto){
-    this.id = userDto.getId();
-    this.username = userDto.getUsername();
-    this.email = userDto.getEmail();
-    this.password = userDto.getPassword();
-    this.firstName = userDto.getFirstName();
-    this.secondName = userDto.getSecondName();
-    this.birthDate = userDto.getBirthDate();
+    public User(UserDto userDto){
+        this.id = userDto.getId();
+        this.username = userDto.getUsername();
+        this.email = userDto.getEmail();
+        this.password = userDto.getPassword();
+        this.firstName = userDto.getFirstName();
+        this.secondName = userDto.getSecondName();
+        this.birthDate = userDto.getBirthDate();
 
-}
+    }
 
 }
